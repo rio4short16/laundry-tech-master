@@ -78,9 +78,11 @@
 	
 $('#new_user').click(function(){
 	uni_modal('New User','manage_user.php')
+	$("#uni_modal .modal-footer").hide();
 })
 $('.edit_user').click(function(){
 	uni_modal('Edit User','manage_user.php?id='+$(this).attr('data-id'))
+	$("#uni_modal .modal-footer").hide();
 })
 $('.delete_user').click(function(){
 		// _conf("Are you sure to delete this user?","delete_user",[$(this).attr('data-id')])

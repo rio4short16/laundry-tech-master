@@ -56,7 +56,7 @@ foreach($user->fetch_array() as $k =>$v){
 				<option value="2" <?php echo isset($meta['type']) && $meta['type'] == 2 ? 'selected': '' ?>>Staff</option>
 			</select>
 		</div>
-		<!-- <div class="form-group row justify-content-between align-items-center">
+		<div class="form-group row justify-content-between align-items-center">
 			 <div class="col-6">
 				 <input type="submit" value="Save" class="btn btn-primary btn-block" id='submit'>
 			 </div>
@@ -64,7 +64,7 @@ foreach($user->fetch_array() as $k =>$v){
 				<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cancel</button>
 			 </div>
         	
-		</div> -->
+		</div>
 	</form>
 </div>
 <script type="text/javascript">
@@ -79,6 +79,9 @@ foreach($user->fetch_array() as $k =>$v){
 			$("#password").attr('type', 'password')
 		}
 	})
+	if($("#modal-title").text() == 'Edit User' || $("#modal-title").text() == 'New User'){
+    	alert("Remove Modal Footer")
+  	}
 </script>
 <script type="module">
   // Import the functions you need from the SDKs you need
