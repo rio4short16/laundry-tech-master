@@ -203,8 +203,8 @@ Class Action {
 
 	function save_laundry(){
 		extract($_POST);
-		$data = " customer_name = '$customer_name' ";
-		$data .= ", first_name = '$first_name' ";
+		// $data = " customer_name = '$customer_name' ";
+		$data .= " first_name = '$first_name' ";
 		$data .= ", last_name = '$last_name' ";
 		$data .= ", customer_address = '$customer_address' ";
 		$data .= ", remarks = '$remarks' ";

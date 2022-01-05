@@ -152,7 +152,7 @@ if(isset($_GET['id']))
 				<div class="col-md-4">	
 					<div class="form-group">	
 						<label for="" class="control-label">Laundry Category</label>
-						<select class="custom-select browser-default" id="laundry_category_id">
+						<select class="form-control custom-select browser-default" id="laundry_category_id">
 							<?php 
 								$cat = $conn->query("SELECT * FROM laundry_categories order by name asc");
 								while($row = $cat->fetch_assoc()):
@@ -223,7 +223,7 @@ if(isset($_GET['id']))
 				</table>
 			</div>	
 			<hr>
-			<div class="row justify-content-between align-items-item">
+			<div class="row justify-content-between align-items-center">
 				<div class="col-4 form-group">
 					<div class="custom-control custom-switch" id="pay-switch">
 					  <input type="checkbox" class="custom-control-input" value="1" name="pay" id="paid" <?php echo isset($pay_status) && $pay_status == 1 ? 'checked' :'' ?>>
@@ -231,7 +231,7 @@ if(isset($_GET['id']))
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-between align-items-item" id="payment">
+			<div class="row justify-content-between align-items-center" id="payment">
 				<div class="col-md-6">
 					<div class="form-group">	
 						<label for="" class="control-label">Amount Tendered</label>
@@ -248,6 +248,18 @@ if(isset($_GET['id']))
 					<div class="form-group">	
 						<label for="" class="control-label">Change</label>
 						<input type="number" step="any" min="1" value="<?php echo isset($amount_change) ? $amount_change : 0 ?>" class="form-control text-right" name="change" readonly="">
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-around align-items-center">
+				<div class="col-md-5">
+					<div class="form-group">	
+						<input type="submit" value="Save" class="btn btn-primary btn-block" id='submit'>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-group">	
+						<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cancel</button>
 					</div>
 				</div>
 			</div>

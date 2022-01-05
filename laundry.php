@@ -140,9 +140,11 @@
 	$(function(){
 		$('#new_laundry').click(function(){
 			uni_modal('New Laundry','manage_laundry.php','mid-large')
+			$("#uni_modal .modal-footer").hide();
 		})
 		$('.edit_laundry').click(function(){
 			uni_modal('Edit Laundry','manage_laundry.php?id='+$(this).attr('data-id'),'mid-large')
+			$("#uni_modal .modal-footer").hide();
 		})
 		$('.delete_laundry').click(function(){
 			_conf("Are you sure to remove this data from list?","delete_laundry",[$(this).attr('data-id')])
