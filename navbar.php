@@ -14,10 +14,9 @@
 			<?php if($_SESSION['login_type'] == 1): ?>
 				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Users</a>
 			<?php endif; ?>
-				 <center> <img src="assets/img/LaundryTechLogo.png" alt="" style="width:150px;height:150px;"> </center>
-			<center>
-		<h5><p style=" font-style: normal; color:#def4ff;">Date: <span id="date"></span></p></h5>
-			</center>
+			<center> <img src="assets/img/LaundryTechLogo.png" alt="" style="width:150px;height:150px;"> </center>
+			<p id="runningDate" class="text-center mb-0 pa-0"></p>
+			<p id="runningTime" class="text-center mb-0 pa-0"></p>
 		</div>
 </div>
 <script>

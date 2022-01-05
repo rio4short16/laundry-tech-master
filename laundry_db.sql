@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2022 at 10:30 PM
+-- Generation Time: Jan 05, 2022 at 11:17 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -72,10 +72,10 @@ INSERT INTO `laundry_categories` (`id`, `name`, `price`) VALUES
 CREATE TABLE `laundry_items` (
   `id` int(30) NOT NULL,
   `laundry_category_id` int(30) NOT NULL,
-  `weight` double NOT NULL,
+  `weight` decimal(10,2) NOT NULL,
   `laundry_id` int(30) NOT NULL,
-  `unit_price` double NOT NULL,
-  `amount` double NOT NULL
+  `unit_price` decimal(10,2) NOT NULL,
+  `amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -83,8 +83,8 @@ CREATE TABLE `laundry_items` (
 --
 
 INSERT INTO `laundry_items` (`id`, `laundry_category_id`, `weight`, `laundry_id`, `unit_price`, `amount`) VALUES
-(47, 5, 2, 32, 8.13, 16.26),
-(48, 4, 2, 32, 8.125, 16.25);
+(47, 5, '2.00', 32, '8.13', '16.26'),
+(48, 4, '2.00', 32, '8.13', '16.25');
 
 -- --------------------------------------------------------
 
@@ -101,10 +101,10 @@ CREATE TABLE `laundry_list` (
   `contact` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=Pending, 1 = ongoing,2= ready,3= claimed',
   `queue` int(30) NOT NULL,
-  `total_amount` double NOT NULL,
+  `total_amount` decimal(10,2) NOT NULL,
   `pay_status` tinyint(1) DEFAULT 0,
-  `amount_tendered` double NOT NULL,
-  `amount_change` double NOT NULL,
+  `amount_tendered` decimal(10,2) NOT NULL,
+  `amount_change` decimal(10,2) NOT NULL,
   `remarks` text NOT NULL,
   `washing_id` varchar(100) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
@@ -115,12 +115,12 @@ CREATE TABLE `laundry_list` (
 --
 
 INSERT INTO `laundry_list` (`id`, `customer_name`, `first_name`, `last_name`, `customer_address`, `contact`, `status`, `queue`, `total_amount`, `pay_status`, `amount_tendered`, `amount_change`, `remarks`, `washing_id`, `date_created`) VALUES
-(6, 'Rhayz', NULL, NULL, NULL, '56789', 3, 1, 8.13, 1, 50, 41.87, 'test', 'Washing 2', '2021-04-30 14:40:42'),
-(7, 'katzz', NULL, NULL, NULL, '09281727402', 3, 1, 0, 1, 20, 13.75, 'sample', 'Washing 1', '2021-07-16 11:11:47'),
-(30, 'washing 1', NULL, NULL, NULL, '1111', 3, 1, 8.13, 0, 0, -8.13, 'sad', 'Washing 1', '2021-08-02 21:12:55'),
-(31, 'sample', NULL, NULL, NULL, '09550995758', 3, 2, 8.13, 0, 0, -8.13, 'sample', 'Washing 2', '2021-08-03 20:06:13'),
-(32, '', 'RIONALD   ', 'CARPIO', '', '09165423233', 0, 1, 32.510000000000005, 1, 73, 40.49, '', 'MACHINE 2 & DRYER 2', '2022-01-05 03:51:19'),
-(33, '', 'RIONALD', 'CARPIO', '551 Hernandez St.', '09165423233', 0, 2, 24.380000000000003, 0, 0, -24.38, '', 'Washing 1', '2022-01-05 03:52:09');
+(6, 'Rhayz', NULL, NULL, NULL, '56789', 3, 1, '8.13', 1, '50.00', '41.87', 'test', 'Washing 2', '2021-04-30 14:40:42'),
+(7, 'katzz', NULL, NULL, NULL, '09281727402', 3, 1, '0.00', 1, '20.00', '13.75', 'sample', 'Washing 1', '2021-07-16 11:11:47'),
+(30, 'washing 1', NULL, NULL, NULL, '1111', 3, 1, '8.13', 0, '0.00', '-8.13', 'sad', 'Washing 1', '2021-08-02 21:12:55'),
+(31, 'sample', NULL, NULL, NULL, '09550995758', 3, 2, '8.13', 0, '0.00', '-8.13', 'sample', 'Washing 2', '2021-08-03 20:06:13'),
+(32, '', 'RIONALD   ', 'CARPIO', '551 Hernandez St.', '09165423233', 0, 1, '32.51', 1, '73.00', '40.49', '', 'MACHINE 2 & DRYER 2', '2022-01-05 03:51:19'),
+(33, '', 'RIONALD', 'CARPIO', '551 Hernandez St.', '09165423233', 0, 2, '24.38', 0, '0.00', '-24.38', '', 'Washing 1', '2022-01-05 03:52:09');
 
 -- --------------------------------------------------------
 

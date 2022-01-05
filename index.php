@@ -32,7 +32,7 @@
   }
 </style>
 
-<body>
+<body onload=display_ct()>
 	<?php include 'topbar.php' ?>
   
 	<div class="content-container">
@@ -81,6 +81,20 @@
     </div>
   </div>
 </body>
+<script type="text/javascript">
+  function runTime(){
+    var refresh=1000; // Refresh rate in milli seconds
+    mytime=setTimeout('display_ct()',refresh)
+  }
+
+  function display_ct() {
+    var date = new Date().toLocaleDateString()
+    var time = new Date().toLocaleTimeString()
+    document.getElementById('runningDate').innerHTML = "Date : " + date;
+    document.getElementById('runningTime').innerHTML = "Time : " + time;
+    runTime();
+  }
+</script>
 
 <script>
 	window.start_load = function(){

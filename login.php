@@ -90,7 +90,7 @@ header("location:index.php?page=home");
 }
 </style>
 
-<body>
+<body onload=display_ct()>
 
 
   <main id="main" class=" bg-dark">
@@ -99,17 +99,22 @@ header("location:index.php?page=home");
   				<!-- <div class="laundry-logo"></div> -->
 	 <img src="assets/img/BoomBoomWashLogo.png" alt="width="300px" height="550px"">
 	<center>
-		<h4><p style=" font-style: normal; color:black;">Date: <span id="date"></span></p></h4>
-					<script>
-					var dt = new Date();
-					document.getElementById("date").innerHTML = dt.toLocaleDateString();
-					</script>
-
-		<h4><p style="font-style: normal; color:black;">Time: <span id="time"></span></p></h4>
+		<h4><p style=" font-style: normal; color:black;"><span id="date"></span></p></h4>
+		<h4><p style="font-style: normal; color:black;"><span id="time"></span></p></h4>
 
 					<script>
-					var dt = new Date();
-					document.getElementById("time").innerHTML = dt.toLocaleTimeString();
+					function runTime(){
+						var refresh=1000; // Refresh rate in milli seconds
+						mytime=setTimeout('display_ct()',refresh)
+					}
+
+					function display_ct() {
+						var date = new Date().toLocaleDateString()
+						var time = new Date().toLocaleTimeString()
+						document.getElementById('date').innerHTML = "Date : " + date;
+						document.getElementById('time').innerHTML = "Time : " + time;
+						runTime();
+					}
 					</script>
 	</center>				  
 
