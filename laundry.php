@@ -152,7 +152,6 @@
 		$(".print_laundry").on('click', function(e){
 			e.preventDefault();
 			const ID = $(this).attr('data-id')
-			console.log(ID)
 			$.ajax({
 				method: "POST",
 				url: "getlaundry.php",
@@ -191,13 +190,13 @@
 							<h6><strong>Washing Machine:</strong> ${laundry.washing_id != '' ? laundry.washing_id : 'N/A'}</h6>
 						</div>`
 						var lStatus = '';
-						if(laundry.status == 0)
+						if(laundry.status == "0")
 							lStatus = 'Pending'
-						else if(laundry.status == 1)
+						else if(laundry.status == "1")
 							lStatus = 'Processing'
-						else if(laundry.status == 2)
+						else if(laundry.status == "2")
 							lStatus = 'Ready to Claim'
-						else(laundry.status == 3)
+						else if(laundry.status == "3")
 							lStatus = 'Claimed'
 						
 						
@@ -234,7 +233,6 @@
 							url: "getlaundryitems.php?id="+ID,
 							dataType: "json",
 							success: function(res){
-								// console.log(res)
 								var laundryItems = res;
 								if(laundryItems.length > 0){
 									$.each(laundryItems, function(idx, item){
@@ -262,8 +260,6 @@
 								<div class="col-12">
 									<h6 class="text-right"><strong>Change:</strong> &nbsp; ${laundry.amount_change != '' && laundry.amount_change > 0 ? laundry.amount_change : '0'} PHP </h6>
 								</div>`
-								console.log(strAppend)
-
 								$('#receipt-body').append(strAppend);
 								$('#datetime').text('Date Printed: ' + new Date().toLocaleString())
 								$('#printModal').modal('show');
