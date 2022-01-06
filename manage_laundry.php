@@ -37,23 +37,20 @@ if(isset($_GET['id']))
 					<label for="" class="control-label">Last Name</label>
 					<input type="text" class="form-control" name="last_name" value="<?php echo isset($last_name) ? $last_name : '' ?>" required>
 					</div>
-
-					
-
-					</div>
-				<?php if(isset($_GET['id'])): ?>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label for="" class="control-label">Status</label>
-						<select name="status" id="" class="custom-select browser-default">
-							<option value="0" <?php echo $status == 0 ? "selected" : '' ?>>Pending</option>
-							<option value="1" <?php echo $status == 1 ? "selected" : '' ?>>Processing</option>
-							<option value="2" <?php echo $status == 2 ? "selected" : '' ?>>Ready to be Claim</option>
-							<option value="3" <?php echo $status == 3 ? "selected" : '' ?>>Claimed</option>
-						</select>
-					</div>
 				</div>
-				<?php endif; ?>				
+					<?php if(isset($_GET['id'])): ?>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="" class="control-label">Status</label>
+							<select name="status" id="" class="custom-select browser-default">
+								<option value="0" <?php echo $status == 0 ? "selected" : '' ?>>Pending</option>
+								<option value="1" <?php echo $status == 1 ? "selected" : '' ?>>Processing</option>
+								<option value="2" <?php echo $status == 2 ? "selected" : '' ?>>Ready to be Claim</option>
+								<option value="3" <?php echo $status == 3 ? "selected" : '' ?>>Claimed</option>
+							</select>
+						</div>
+					</div>
+					<?php endif; ?>				
 					<!-- contact number -->
 					<?php if(!isset($_GET['id'])): ?>
 					<div class="col-md-6">	
@@ -62,7 +59,7 @@ if(isset($_GET['id']))
 							<input type="text" class="form-control" name="contact" required>					
 						</div>
 						
-						<!-- Need To Declare on Database -->
+					<!-- Need To Declare on Database -->
 					<div class="form-group">
 					<label for="" class="control-label">Address</label>
 					<input type="text" class="form-control" name="customer_address" value="<?php echo isset($customer_address) ? $customer_address : '' ?>" required>
@@ -73,21 +70,24 @@ if(isset($_GET['id']))
 
 
 
-					<?php if(isset($_GET['id'])): ?>
-					<?php
+					<?php if(isset($_GET['id'])){
 						$ID = $_GET['id'];
 						$quee = "SELECT * FROM laundry_list where id = '$ID'";
 						$contact = $conn->query($quee) or die($conn->error);
 						$showContacts = $contact->fetch_assoc();
-						
 					?>
+
 					<div class="col-md-6">	
 						<div class="form-group">	
 							<label for="" class="control-label">Contact Number</label>
 							<input type="text" class="form-control" name="contact" value="<?php echo $showContacts['contact']?>">					
 						</div>
 					</div>
-					<?php endif; ?>
+					<div class="form-group">
+						<label for="" class="control-label">Address</label>
+						<input type="text" class="form-control" name="customer_address" value="<?php echo $showContacts['customer_address'] ?>" required>
+					</div>
+					<?php } ?>
 					<!-- /contact number -->
 			</div>
 			
@@ -101,7 +101,7 @@ if(isset($_GET['id']))
 					
 				
 
-				<!-- washing machine -->
+			<!-- Washing Machine -->
 			<?php if(isset($_GET['id'])): ?>
 				<div class="col-md-6">
 					<div class="form-group">
@@ -358,15 +358,9 @@ if(isset($_GET['id']))
 		    contentType: false,
 		    processData: false,
 		    method: 'POST',
-		    // type: 'POST',
+		    type: 'POST',
 			success: function(resp){
-				console.log(resp)
-				if(resp==1){
-					location.reload();
-				}
-				else if(resp==2){
-					location.reload();
-				}
+				location.reload();
 			}
 		})
 	})
